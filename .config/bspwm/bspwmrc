@@ -1,0 +1,47 @@
+#! /bin/sh
+
+# 1. Essential Background Daemons
+pgrep -x sxhkd > /dev/null || sxhkd &
+# Ensure this package is installed: sudo pacman -S polkit-gnome
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
+# 2. Visuals (Wallpaper FIRST for better Picom blur initialization)
+feh --bg-fill $HOME/Pictures/background/1.jpg &
+
+# 3. Compositor (Pointed exactly to your new config)
+picom --config $HOME/.config/picom/picom.conf &
+
+# 4. UI Elements
+$HOME/.config/polybar/launch.sh &
+dunst & 
+
+# 5. Power Management
+xidlehook --not-when-audio --not-when-fullscreen --timer 1800 'systemctl suspend-then-hibernate' '' &
+
+# --- Monitor & Workspace Setup ---
+bspc monitor -d 1 2 3 4 5 6 7 8 9 10
+
+# --- Window Decorations (macOS Aesthetic) ---
+bspc config focused_border_color "#05BFDB"
+bspc config normal_border_color  "#282c34"
+bspc config border_width         1
+bspc config window_gap          10  # Increased gap for better "floating" look
+
+# --- Behavior ---
+bspc config focus_follows_pointer true
+bspc config pointer_follows_focus false
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+# --- Mouse Bindings (Super/Mod4) ---
+bspc config pointer_modifier mod4
+bspc config pointer_action1 move
+bspc config pointer_action2 resize_side
+bspc config pointer_action3 resize_corner
+
+# --- Window Rules ---
+# Make floating windows center by default
+bspc rule -a "*" center=on
+# Ensure media players don't have transparency/blur issues
+bspc rule -a mpv state=floating

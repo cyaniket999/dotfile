@@ -1,0 +1,9 @@
+configuration {
+    modi: "drun,run,window";
+    show-icons: true;
+    display-drun: "APPS";
+    drun-display-format: "{name}";
+    font: "JetBrainsMono Nerd Font Bold 10";
+}
+
+@theme "macos"

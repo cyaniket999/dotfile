@@ -1,0 +1,45 @@
+configuration {
+    show-icons: false;
+}
+
+@import "macos.rasi"
+
+window {
+    width: 500px;
+    height: 180px;
+    border-radius: 24px;   /* Extra round for macOS look */
+    location: center;
+    anchor: center;
+    padding: 20px;
+}
+
+mainbox {
+    children: [ listview ];
+}
+
+listview {
+    columns: 5;
+    lines: 1;
+    spacing: 15px;
+    cycle: true;
+    dynamic: true;
+    layout: vertical;
+}
+
+element {
+    orientation: vertical;
+    padding: 25px 0px;
+    border-radius: 18px;
+}
+
+element-text {
+    font: "JetBrainsMono Nerd Font 32"; /* Big Icons */
+    expand: true;
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+}
+
+element selected {
+    background-color: @accent;
+    text-color: #000000;
+}
