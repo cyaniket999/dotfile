@@ -2,20 +2,21 @@
 
 # 1. Essential Background Daemons
 pgrep -x sxhkd > /dev/null || sxhkd &
-# Ensure this package is installed: sudo pacman -S polkit-gnome
+
+# 2. Ensure this package is installed: sudo pacman -S polkit-gnome
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
-# 2. Visuals (Wallpaper FIRST for better Picom blur initialization)
+# 3. Visuals (Wallpaper FIRST for better Picom blur initialization)
 feh --bg-fill $HOME/Pictures/background/1.jpg &
 
-# 3. Compositor (Pointed exactly to your new config)
+# 4. Compositor (Pointed exactly to your new config)
 picom --config $HOME/.config/picom/picom.conf &
 
-# 4. UI Elements
+# 5. UI Elements
 $HOME/.config/polybar/launch.sh &
 dunst & 
 
-# 5. Power Management
+# 6. Power Management
 xidlehook --not-when-audio --not-when-fullscreen --timer 1800 'systemctl suspend-then-hibernate' '' &
 
 # --- Monitor & Workspace Setup ---

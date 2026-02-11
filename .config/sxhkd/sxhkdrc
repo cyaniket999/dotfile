@@ -38,7 +38,7 @@ alt + f
       pcmanfm
 
 alt + p
-      flameshot full --path=~/Pictures/Screenshots
+      flameshot full --path= ~/Pictures/Screenshots
 
 
 
