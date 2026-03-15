@@ -40,3 +40,10 @@ alias grep='grep --color=auto'
 alias update='yay -Syu'
 alias cleanup='sudo pacman -Rns $(pacman -Qtdq)' # Removes unused dependencies
 alias mirror-update='sudo reflector --latest 5 --sort rate --save /etc/pacman.d/mirrorlist'
+
+#vpn aliases
+# VPN Quick-Switch Aliases
+alias vpn-trade='sudo wg-quick down wg1 2>/dev/null; sudo wg-quick up wg0'
+alias vpn-private='sudo wg-quick down wg0 2>/dev/null; sudo wg-quick up wg1'
+alias vpn-off='sudo wg-quick down wg0 2>/dev/null; sudo wg-quick down wg1 2>/dev/null'
+alias vpn-status='sudo wg show'
