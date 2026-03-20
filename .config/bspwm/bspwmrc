@@ -1,10 +1,8 @@
 #!/bin/sh
 
-# 1. Essential Background Daemons
+# Essential Background Daemons
 pgrep -x sxhkd > /dev/null || sxhkd -m -1 &
 
-# Prevent Shift key and modifiers from "sleeping" or expiring
-xkbset exp =st =twokey =mousekeys =sticky =slowkeys =bouncekeys &
 
 # Ensure this package is installed: sudo pacman -S polkit-gnome
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
