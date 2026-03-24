@@ -1,35 +1,37 @@
 [global]
 
-# Play sound on notification
+     # Optional: Sound script
     script = ~/.config/dunst/play_sound.sh
 
-    ### Display ###
+    ### Display & Geometry (2026 Standard) ###
     monitor = 0
     follow = mouse
-    width = 320
-    height = 110
+    
+    # Use the new tuple syntax for dynamic sizing
+    width = (0, 300)
+    height = (0, 80)
     origin = top-right
-    offset = 20x55
-    scale = 0
+    offset = (20, 55)
     
     # UI Elements
     progress_bar = true
-    progress_bar_height = 8
+    progress_bar_height = 10
     progress_bar_frame_width = 1
-    progress_bar_corner_radius = 4
-    indicate_hidden = yes
-    transparency = 10
+    progress_bar_corner_radius = 5
+    
+    indicate_hidden = true
+    transparency = 20
     separator_height = 2
     padding = 15
     horizontal_padding = 15
     text_icon_padding = 15
     
-    # Glass Frame
+    # Frame and Corners
     frame_width = 1
     frame_color = "#33ffffff"
     corner_radius = 12
 
-    ### Typography ###
+    ### Text & Interaction ###
     font = JetBrainsMono Nerd Font 9
     line_height = 2
     format = "<b>%s</b>\n%b"
@@ -37,33 +39,37 @@
     vertical_alignment = center
     word_wrap = yes
     stack_duplicates = true
-
-    ### MOUSE INTERACTION ###
-    # Left click: Close the clicked notification
-    mouse_left_click = close_current
-    # Middle click: Open context/action (if available) then close
-    mouse_middle_click = do_action, close_current
-    # Right click: Close ALL notifications at once
-    mouse_right_click = close_all
+    
+    # Fixed: Use 1/0 or true/false based on 2026 docs
+    ignore_dbusclose = true
+    override_dbus_timeout = 1
+    show_indicators = true
 
     ### Icons ###
     icon_position = left
-    min_icon_size = 32
-    max_icon_size = 64
+    min_icon_size = 25
+    max_icon_size = 55
+    enable_recursive_icon_lookup = true
     icon_path = /usr/share/icons/Papirus-Dark/48x48/actions:/usr/share/icons/Papirus-Dark/48x48/apps
+
+    ### Mouse Actions ###
+    mouse_left_click = close_current
+    mouse_middle_click = do_action, close_current
+    mouse_right_click = close_all
 
 [urgency_low]
     background = "#CC1a1b26"
     foreground = "#cfc9c2"
-    timeout = 5  # 5 Seconds
+    timeout = 5
 
 [urgency_normal]
     background = "#CC1a1b26"
     foreground = "#ffffff"
-    timeout = 5  # 5 Seconds
+    timeout = 5
 
 [urgency_critical]
     background = "#CC1a1b26"
     foreground = "#ffffff"
     frame_color = "#f9423a"
-    timeout = 5  # 5 Seconds (Set to 0 if you want criticals to stay forever)
+    timeout = 0 # Stays until dismissed
+
