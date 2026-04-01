@@ -1,6 +1,7 @@
+
 # --- System Controls ---
 
-# Brightness (Screen)
+# Brightness
 XF86MonBrightnessUp
     brightnessctl s +10%
 
@@ -17,140 +18,139 @@ XF86AudioLowerVolume
 XF86AudioRaiseVolume
     pactl set-sink-volume @DEFAULT_SINK@ +5% && canberra-gtk-play -i audio-volume-change
 
-# terminal emulator
+# --- Program Launchers ---
+
+# Terminal emulator
 super + Return
-	alacritty
+    alacritty
 
-# program launcher
+# Rofi launchers
 alt + w
-      rofi -show window
+    rofi -show window
 
-super + @space
-      rofi -show drun
+super + space
+    rofi -show drun
 
 alt + r
-      rofi -show run
+    rofi -show run
 
+# Quick Apps
 alt + b
-      firefox
+    firefox
 
 alt + f
-      pcmanfm
+    pcmanfm
 
 alt + p
-      flameshot full --path= ~/Pictures/Screenshots
+    flameshot full --path= ~/Pictures/Screenshots
 
-
-
-# make sxhkd reload its configuration files:
+# Reload sxhkd
 super + Escape
-	pkill -USR1 -x sxhkd
+    pkill -USR1 -x sxhkd
 
-#
-# bspwm hotkeys
-#
+# --- bspwm Hotkeys ---
 
-# quit/restart bspwm
-super + shift + {q,r}
-	bspc {quit,wm -r}
+# Quit/Restart bspwm 
+super + alt + {q,r}
+    bspc {quit,wm -r}
 
-# close and kill
+# Close and Kill 
 super + c
     bspc node -c
 
-super + shift + c
+super + alt + c
     bspc node -k
 
-# alternate between the tiled and monocle layout
+# Alternate layouts
 super + m
-	bspc desktop -l next
+    bspc desktop -l next
 
-# send the newest marked node to the newest preselected node
+# Node manipulation
 super + y
-	bspc node newest.marked.local -n newest.!automatic.local
+    bspc node newest.marked.local -n newest.!automatic.local
 
-# swap the current node and the biggest window
 super + g
-	bspc node -s biggest.window
+    bspc node -s biggest.window
 
-#
-# state/flags
-#
+# --- Window States/Flags ---
 
-# set the window state
-super + {t,shift + t,s,f}
-	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+# Set window state
+super + {t,s,f}
+    bspc node -t {tiled,floating,fullscreen}
 
-# set the node flags
+# Set node flags
 super + ctrl + {m,x,y,z}
-	bspc node -g {marked,locked,sticky,private}
+    bspc node -g {marked,locked,sticky,private}
 
-#
-# focus/swap
-#
+# --- Focus and Swapping ---
 
-# focus the node in the given direction
-super + {_,shift + }{h,j,k,l}
-	bspc node -{f,s} {west,south,north,east}
+# Focus node in direction
+super + {h,j,k,l}
+    bspc node -f {west,south,north,east}
 
-# focus the node for the given path jump
-super + {p,b,comma,period}
-	bspc node -f @{parent,brother,first,second}
-
-# focus the next/previous window in the current desktop
-super + {_,shift + }w
-	bspc node -f {next,prev}.local.!hidden.window
-
-# focus the next/previous desktop in the current monitor
-super + bracket{left,right}
-	bspc desktop -f {prev,next}.local
-
-# focus the last node/desktop
-super + {grave,Tab}
-	bspc {node,desktop} -f last
-
-# focus the older or newer node in the focus history
-super + {o,i}
-	bspc wm -h off; \
-	bspc node {older,newer} -f; \
-	bspc wm -h on
-
-# focus or send to the given desktop
-super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
-
-#
-# preselect
-#
-
-# preselect the direction
-super + ctrl + {h,j,k,l}
-	bspc node -p {west,south,north,east}
-
-# preselect the ratio
-super + ctrl + {1-9}
-	bspc node -o 0.{1-9}
-
-# cancel the preselection for the focused node
-super + ctrl + space
-	bspc node -p cancel
-
-# cancel the preselection for the focused desktop
-super + ctrl + shift + space
-	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
-
-#
-# move/resize
-#
-
-# expand a window by moving one of its side outward
+# Swap node in direction (Shift -> Alt)
 super + alt + {h,j,k,l}
-	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+    bspc node -s {west,south,north,east}
 
-# contract a window by moving one of its side inward
-super + alt + shift + {h,j,k,l}
-	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+# Focus node via path
+super + {p,b,comma,period}
+    bspc node -f @{parent,brother,first,second}
 
-# move a floating window
+# Focus next/prev window
+super + {_,alt + }w
+    bspc node -f {next,prev}.local.!hidden.window
+
+# Focus last node/desktop
+super + {grave,Tab}
+    bspc {node,desktop} -f last
+
+# Focus history
+super + {o,i}
+    bspc wm -h off; \
+    bspc node {older,newer} -f; \
+    bspc wm -h on
+
+# --- Desktop Management ---
+
+# Focus desktop 1-10
+super + {1-9,0}
+    bspc desktop -f '^{1-9,10}'
+
+# Send node to desktop 1-10 
+super + alt + {1-9,0}
+    bspc node -d '^{1-9,10}'
+
+# Focus next/previous desktop
+super + {bracketright,bracketleft}
+    bspc desktop -f {next,prev}.local
+
+# --- Preselection ---
+
+# Preselect direction
+super + ctrl + {h,j,k,l}
+    bspc node -p {west,south,north,east}
+
+# Preselect ratio
+super + ctrl + {1-9}
+    bspc node -o 0.{1-9}
+
+# Cancel preselection 
+super + ctrl + space
+    bspc node -p cancel
+
+super + ctrl + alt + space
+    bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+# --- Move/Resize ---
+
+# Expand window (Outward)
+super + alt + {Left,Down,Up,Right}
+    bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# Contract window (Inward)
+super + ctrl + {Left,Down,Up,Right}
+    bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# Move floating window
 super + {Left,Down,Up,Right}
-	bspc node -v {-20 0,0 20,0 -20,20 0}
+    bspc node -v {-20 0,0 20,0 -20,20 0}
