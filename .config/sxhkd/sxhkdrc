@@ -25,7 +25,7 @@ super + Return
     alacritty
 
 # Rofi launchers
-alt + w
+alt + Tab
     rofi -show window
 
 super + space
@@ -36,7 +36,7 @@ alt + r
 
 # Quick Apps
 alt + b
-    firefox
+    Chromium
 
 alt + f
     pcmanfm

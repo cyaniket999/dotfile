@@ -3,17 +3,16 @@
 # Essential Background Daemons
 pgrep -x sxhkd > /dev/null || sxhkd -m -1 &
 
-
 # Ensure this package is installed: sudo pacman -S polkit-gnome
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
+#Power management
+xfce4-power-manager &
 
 # Visuals (Wallpaper FIRST for better Picom blur initialization)
 feh --bg-fill $HOME/Pictures/backgrounds/42.jpg &
 
-killall -q picom
-while pgrep -u $USER -x picom >/dev/null; do sleep 1; done
-
-# Compositor (Pointed exactly to your new config)
+# Compositor
 picom --config $HOME/.config/picom/picom.conf &
 
 # UI Elements
@@ -55,3 +54,5 @@ bspc config pointer_action3 resize_corner  # This is Right Click
 bspc rule -a "*" center=on
 # Ensure media players don't have transparency/blur issues
 bspc rule -a mpv state=floating
+bspc rule -a Chromium state=floating
+bspc rule -a feh state=floating
