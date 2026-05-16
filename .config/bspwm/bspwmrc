@@ -58,3 +58,8 @@ bspc rule -a "*" center=on
 bspc rule -a mpv state=floating
 bspc rule -a Chromium state=floating
 bspc rule -a feh state=floating
+bspc rule -a Obs state=floating
+bspc rule -a qbittorrent state=floating
+bspc rule -a pcmanfm state=floating
+bspc rule -a brave state=floating
+
