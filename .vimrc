@@ -1,5 +1,3 @@
-" Disable compatibility with vi which can cause unexpected issues.
-set nocompatible
 
 " Enable type file detection. Vim will be able to try to detect the type of file in use.
 filetype on
