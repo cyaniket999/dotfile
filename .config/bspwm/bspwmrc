@@ -61,5 +61,5 @@ bspc rule -a feh state=floating
 bspc rule -a Obs state=floating
 bspc rule -a qbittorrent state=floating
 bspc rule -a pcmanfm state=floating
-bspc rule -a brave state=floating
+bspc rule -a brave-bin state=floating
 
