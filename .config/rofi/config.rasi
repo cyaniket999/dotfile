@@ -1,9 +1,6 @@
 configuration {
-    modi: "drun,run,window";
-    show-icons: true;
-    display-drun: "APPS";
+    modi:                "drun,run,window";
+    show-icons:          true;
     drun-display-format: "{name}";
-    font: "JetBrainsMono Nerd Font Bold 10";
 }
-
-@theme "macos"
+@theme "/usr/share/rofi/themes/solarized.rasi"

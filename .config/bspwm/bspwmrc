@@ -6,22 +6,20 @@ pgrep -x sxhkd > /dev/null || sxhkd -m -1 &
 # Ensure this package is installed: sudo pacman -S polkit-gnome
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
-xmodmap ~/.Xmodmap &
-
-#Power management
-xfce4-power-manager &
+# changing caplocks to shift key
+xmodmap ./Xmodmap &
 
 # Visuals (Wallpaper FIRST for better Picom blur initialization)
 feh --bg-fill $HOME/Pictures/backgrounds/42.jpg &
 
 # Compositor
-picom --config $HOME/.config/picom/picom.conf &
+#picom --config $HOME/.config/picom/picom.conf &
 
 # UI Elements
 $HOME/.config/polybar/launch.sh &
 
-killall dunst
-dunst & 
+#killall dunst
+#dunst & 
 
 # --- Monitor & Workspace Setup ---
 bspc monitor -d 1 2 3 4 5
@@ -34,7 +32,7 @@ bspc config window_gap 2
 
 # This forces bspwm to tell the X server a window was "mapped" 
 # every time you switch desktops, which kicks Picom into gear.
-bspc config focus_by_distance true
+#bspc config focus_by_distance true
 
 # --- Behavior ---
 bspc config focus_follows_pointer true
@@ -52,9 +50,10 @@ bspc config pointer_action2 resize_side    # This is Middle Click
 bspc config pointer_action3 resize_corner  # This is Right Click
 
 # --- Window Rules ---
-# Make floating windows center by default
-bspc rule -a "*" center=on
-bspc rule -a "*" state=floating
-bspc rule -a Alacritty state=tiled
 
+# 1. Global fallback size for any floating window that has no size defined
+bspc config floating_rectangle 700x500+0+0
+
+# 2. THE FIX: Force ALL windows to float, center, turn off maximize, AND set an explicit size
+bspc rule -a "*" state=floating maximize=off rectangle=700x500+0+0
 
