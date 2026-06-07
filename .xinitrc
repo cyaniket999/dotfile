@@ -18,6 +18,9 @@ fi
 
 # Background status bar loop
 while true; do
+
+    BLUETOOTH=$(~/.local/bin/dwm_bluetooth.sh)
+    
     MEM=$(free -h | awk '/^Mem:/ {print $3 "/" $2}')
     
     # Get Battery Info
@@ -49,8 +52,9 @@ while true; do
         WIFI="Disconnected"
     fi
     
+    
     # Set the dwm bar text
-    xsetroot -name " $WIFI | Vol: $VOL | RAM: $MEM | Bat: $BATT | $CLK "
+    xsetroot -name " $BLUETOOTH | $WIFI | Vol: $VOL | RAM: $MEM | Bat: $BATT | $CLK "
     
     sleep 0.5
 done &
