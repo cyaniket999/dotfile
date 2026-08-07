@@ -3,17 +3,8 @@
 # Essential Background Daemons
 pgrep -x sxhkd > /dev/null || sxhkd -m -1 &
 
-# Ensure this package is installed: sudo pacman -S polkit-gnome
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-
-# changing caplocks to shift key
-xmodmap ./Xmodmap &
-
-# Visuals (Wallpaper FIRST for better Picom blur initialization)
-feh --bg-fill $HOME/Pictures/backgrounds/42.jpg &
-
 # Compositor
-#picom --config $HOME/.config/picom/picom.conf &
+picom &
 
 # UI Elements
 $HOME/.config/polybar/launch.sh &

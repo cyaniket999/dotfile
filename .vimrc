@@ -1,3 +1,5 @@
+"Enable mouse"
+set mouse=a
 
 " Enable type file detection. Vim will be able to try to detect the type of file in use.
 filetype on
@@ -12,6 +14,7 @@ filetype indent on
 syntax on
 
 " Add numbers to each line on the left-hand side.
+set relativenumber
 set number
 
 " Do not wrap lines. Allow long lines to extend as far as the line goes.
@@ -41,3 +44,6 @@ set wildmenu
 set wildmode=list:longest
 
 set clipboard=unnamedplus
+set autoindent
+set tabstop=4
+set shiftwidth=4

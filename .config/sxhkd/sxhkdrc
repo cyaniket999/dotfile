@@ -1,48 +1,52 @@
-
 # --- System Controls ---
 
 # Brightness
 XF86MonBrightnessUp
-    brightnessctl s +10%
+    brightnessctl set 10%+
 
 XF86MonBrightnessDown
-    brightnessctl s 10%-
+    brightnessctl set 10%-
 
-# Audio (PulseAudio/Pipewire)
+# Audio (PipeWire / WirePlumber matching Openbox & DWM)
 XF86AudioMute
-    pactl set-sink-mute @DEFAULT_SINK@ toggle
+    wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 
 XF86AudioLowerVolume
-    pactl set-sink-volume @DEFAULT_SINK@ -5% 	
+    wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- 	
 
 XF86AudioRaiseVolume
-    pactl set-sink-volume @DEFAULT_SINK@ +5% 
+    wpctl set-volume -l 2.0 @DEFAULT_AUDIO_SINK@ 5%+
+
+# Media Controls
+XF86AudioPlay
+    playerctl play-pause
+
+XF86AudioNext
+    playerctl next
+
+XF86AudioPrev
+    playerctl previous
 
 # --- Program Launchers ---
 
-# Terminal emulator
+# Terminal emulator (Super + Return)
 super + Return
     alacritty
 
-# Rofi launchers
-alt + Tab
-    rofi -show window
-
-super + space
+# Rofi launchers (Matching Openbox: Super+w for drun, Super+r for run)
+super + w
     rofi -show drun
 
-alt + r
+super + r
     rofi -show run
 
-# Quick Apps
-alt + b
-    Chromium
-
-alt + f
+# Quick Apps (Matching Openbox: Super+e for file manager)
+super + e
     pcmanfm
 
-alt + p
-    flameshot full --path= ~/Pictures/Screenshots
+# Screenshot (Matching Openbox/DWM: Print key for Flameshot)
+Print
+    flameshot full -p /home/aniket/Pictures/Screenshots/
 
 # Reload sxhkd
 super + Escape
@@ -51,7 +55,7 @@ super + Escape
 # --- bspwm Hotkeys ---
 
 # Quit/Restart bspwm 
-super + alt + {q,r}
+super + ctrl + {q,r}
     bspc {quit,wm -r}
 
 # Close and Kill 
@@ -112,13 +116,13 @@ super + {o,i}
 
 # --- Desktop Management ---
 
-# Focus desktop 1-10
-super + {1-9,0}
-    bspc desktop -f '^{1-9,10}'
+# Focus desktop 1-5
+super + {1-5}
+    bspc desktop -f '^{1-5}'
 
-# Send node to desktop 1-10 
-super + alt + {1-9,0}
-    bspc node -d '^{1-9,10}'
+# Send node to desktop 1-5 
+super + alt + {1-5}
+    bspc node -d '^{1-5}'
 
 # Focus next/previous desktop
 super + {bracketright,bracketleft}

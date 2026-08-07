@@ -1,0 +1,5 @@
+# Start compositor for visual polish / tearing prevention
+picom &
+
+# Launch the lightweight taskbar/panel
+tint2 &
