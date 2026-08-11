@@ -2,9 +2,9 @@
 padding = { x = 20, y = 20 }
 dynamic_padding = true
 decorations = "none"
-# Since you have Picom, opacity here allows the blur to work
-opacity = 0.85
-blur = true
+
+opacity = 1.0
+blur = false
 
 [scrolling]
 history = 10000

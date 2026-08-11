@@ -30,9 +30,9 @@ killall pasystray 2>/dev/null; pasystray &
 bspc monitor -d 1 2 3 4 5
 
 # --- Window Decorations (Aesthetic) ---
-bspc config focused_border_color "#05BFDB"
-bspc config normal_border_color "#282c34"
-bspc config border_width 2
+#bspc config focused_border_color "#05BFDB"
+#bspc config normal_border_color "#282c34"
+bspc config border_width 0
 bspc config window_gap 2          
 
 # This forces bspwm to tell the X server a window was "mapped" 

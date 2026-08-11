@@ -14,7 +14,9 @@ PS1='[\u@\h \W]\$ '
 alias update='yay -Syu'
 alias cleanup='sudo pacman -Rns $(pacman -Qtdq)' # Removes unused dependencies
 alias mirror-update='sudo reflector --latest 5 --sort rate --save /etc/pacman.d/mirrorlist'
-alias startob='DESKTOP=openbox startx'
-alias startdwm='DESKTOP=dwm startx'
-alias startbspwm='DESKTOP=bspwm startx'
+# Custom X11 session aliases
+alias startdwm='startx'
+alias startob='WM=openbox startx'
+alias startbspwm='WM=bspwm startx'
+alias startxfce='WM=xfce startx'
 
