@@ -1,0 +1,2 @@
+# Always run xmodmap for all sessions
+xmodmap -e "keycode 66 = Shift_L Caps_Lock"

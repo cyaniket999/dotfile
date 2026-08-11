@@ -33,20 +33,24 @@ XF86AudioPrev
 super + Return
     alacritty
 
-# Rofi launchers (Matching Openbox: Super+w for drun, Super+r for run)
+# Rofi launchers
 super + w
     rofi -show drun
 
 super + r
     rofi -show run
 
-# Quick Apps (Matching Openbox: Super+e for file manager)
+# Quick Apps
 super + e
     pcmanfm
 
-# Screenshot (Matching Openbox/DWM: Print key for Flameshot)
+# Screenshot
 Print
-    flameshot full -p /home/aniket/Pictures/Screenshots/
+    flameshot full -p ~/Pictures/Screenshots/
+
+# Dunst  
+ctrl + grave
+    dunstctl history-pop
 
 # Reload sxhkd
 super + Escape
@@ -55,7 +59,7 @@ super + Escape
 # --- bspwm Hotkeys ---
 
 # Quit/Restart bspwm 
-super + ctrl + {q,r}
+ctrl + alt + {q,r}
     bspc {quit,wm -r}
 
 # Close and Kill 
@@ -92,8 +96,8 @@ super + ctrl + {m,x,y,z}
 super + {h,j,k,l}
     bspc node -f {west,south,north,east}
 
-# Swap node in direction (Shift -> Alt)
-super + alt + {h,j,k,l}
+# Swap node in direction
+super + ctrl + {h,j,k,l}
     bspc node -s {west,south,north,east}
 
 # Focus node via path
@@ -101,7 +105,7 @@ super + {p,b,comma,period}
     bspc node -f @{parent,brother,first,second}
 
 # Focus next/prev window
-super + {_,alt + }w
+super + alt + {bracketright,bracketleft}
     bspc node -f {next,prev}.local.!hidden.window
 
 # Focus last node/desktop
@@ -121,7 +125,7 @@ super + {1-5}
     bspc desktop -f '^{1-5}'
 
 # Send node to desktop 1-5 
-super + alt + {1-5}
+super + ctrl + {1-5}
     bspc node -d '^{1-5}'
 
 # Focus next/previous desktop
@@ -131,11 +135,11 @@ super + {bracketright,bracketleft}
 # --- Preselection ---
 
 # Preselect direction
-super + ctrl + {h,j,k,l}
+super + alt + {h,j,k,l}
     bspc node -p {west,south,north,east}
 
 # Preselect ratio
-super + ctrl + {1-9}
+super + alt + {1-9}
     bspc node -o 0.{1-9}
 
 # Cancel preselection 

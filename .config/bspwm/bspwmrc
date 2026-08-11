@@ -3,14 +3,28 @@
 # Essential Background Daemons
 pgrep -x sxhkd > /dev/null || sxhkd -m -1 &
 
-# Compositor
-picom &
+# --- Security & Polkit ---
+killall lxqt-policykit-agent polkit-gnome-authentication-agent-1 2>/dev/null
+if [ -x /usr/lib/lxqt-policykit/lxqt-policykit-agent ]; then
+    /usr/lib/lxqt-policykit/lxqt-policykit-agent &
+elif [ -x /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 ]; then
+    /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+fi
 
-# UI Elements
-$HOME/.config/polybar/launch.sh &
+# --- Wallpaper ---
+if [ -f ~/.fehbg ]; then
+    ~/.fehbg &
+fi
 
-#killall dunst
-#dunst & 
+# --- Compositor, Notifications & Panel ---
+killall picom 2>/dev/null; picom &
+killall dunst 2>/dev/null; dunst &
+killall tint2 2>/dev/null; tint2 &
+
+# --- Tray Applets ---
+killall nm-applet 2>/dev/null; nm-applet &
+killall blueman-applet 2>/dev/null; blueman-applet &
+killall pasystray 2>/dev/null; pasystray &
 
 # --- Monitor & Workspace Setup ---
 bspc monitor -d 1 2 3 4 5
