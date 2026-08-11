@@ -15,6 +15,7 @@ fi
 killall picom 2>/dev/null; picom &
 killall dunst 2>/dev/null; dunst &
 killall xfce4-panel 2>/dev/null; xfce4-panel &
+killall xfce4-power-manager 2>/dev/null; xfce4-power-manager &
 
 # --- Tray Applets ---
 killall nm-applet 2>/dev/null; nm-applet &
