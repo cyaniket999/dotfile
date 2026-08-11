@@ -14,7 +14,7 @@ fi
 # --- Compositor, Notifications & Panel ---
 killall picom 2>/dev/null; picom &
 killall dunst 2>/dev/null; dunst &
-killall tint2 2>/dev/null; tint2 &
+killall xfce4-panel 2>/dev/null; xfce4-panel &
 
 # --- Tray Applets ---
 killall nm-applet 2>/dev/null; nm-applet &
