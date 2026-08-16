@@ -69,7 +69,7 @@ static const char *dmenucmd[]       = { "dmenu_run", "-m", dmenumon, "-fn", dmen
 static const char *termcmd[]        = { "alacritty", NULL };
 static const char *roficmd[]        = { "rofi", "-show", "drun", NULL };
 static const char *rofiruncmd[]     = { "rofi", "-show", "run", NULL };
-static const char *filecmd[]        = { "pcmanfm", NULL };
+static const char *filecmd[]        = { "thunar", NULL };
 static const char *screenshotcmd[]  = { "flameshot", "full", "-p", "/home/aniket/Pictures/Screenshots/", NULL };
 static const char *dunstpopcmd[]    = { "dunstctl", "history-pop", NULL };
 

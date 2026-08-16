@@ -42,7 +42,7 @@ super + r
 
 # Quick Apps
 super + e
-    pcmanfm
+    thunar
 
 # Screenshot
 Print
