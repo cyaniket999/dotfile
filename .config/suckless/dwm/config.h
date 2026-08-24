@@ -74,9 +74,9 @@ static const char *screenshotcmd[]  = { "flameshot", "full", "-p", "/home/aniket
 static const char *dunstpopcmd[]    = { "dunstctl", "history-pop", NULL };
 
 /* Hardware Control Commands (Audio, Brightness, Media) */
-static const char *upvol[]          = { "wpctl", "set-volume", "-l", "2.0", "@DEFAULT_AUDIO_SINK@", "5%+", NULL };
-static const char *downvol[]        = { "wpctl", "set-volume", "@DEFAULT_AUDIO_SINK@", "5%-",      NULL };
-static const char *mutevol[]        = { "wpctl", "set-mute",   "@DEFAULT_AUDIO_SINK@", "toggle",  NULL };
+static const char *upvol[]   = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+5%",    NULL };
+static const char *downvol[] = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-5%",    NULL };
+static const char *mutevol[] = { "pactl", "set-sink-mute",   "@DEFAULT_SINK@", "toggle", NULL };
 
 static const char *brightness_up[]   = { "brightnessctl", "set", "10%+", NULL };
 static const char *brightness_down[] = { "brightnessctl", "set", "10%-", NULL };
